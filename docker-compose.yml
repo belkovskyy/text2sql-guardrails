@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: text2sql_northwind_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: northwind
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./docker/init:/docker-entrypoint-initdb.d
+      - pgdata_northwind:/var/lib/postgresql/data
+
+volumes:
+  pgdata_northwind:
